@@ -1,10 +1,13 @@
+#!/usr/bin/env python3
 # Main.py
 # 
-__description__ = """\tChuong trinh thong ke ket qua thi Codeforces\n
-		Cau lac bo ACM truong Dai hoc Bach Khoa TPHCM"""
+__description__ = '''\
+	Chuong trinh thong ke ket qua thi Codeforces
+	Cau lac bo ACM truong Dai hoc Bach Khoa TPHCM'''
+__version__ = '0.0.1'
 
 import argparse
-
+from argparse import RawTextHelpFormatter
 from api import API
 
 
@@ -31,7 +34,7 @@ def main(args):
 				printResult(c,u)
 			print()
 
-parser = argparse.ArgumentParser(description=__description__)
+parser = argparse.ArgumentParser(description=__description__, formatter_class=RawTextHelpFormatter)
 parser.add_argument('-contests', metavar='contest_id', type=int, nargs='+', help='contest ID')
 parser.add_argument('-users', metavar='user_handle', type=str, nargs='+', help='username')
 args = parser.parse_args()
