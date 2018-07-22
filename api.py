@@ -22,7 +22,7 @@ class ContestResult:
 				else:
 					results[probID].append(submission)
 		self.results = results
-		
+
 
 
 class API:
