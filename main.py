@@ -5,7 +5,7 @@ __description__ = '''\
 	Chuong trinh thong ke ket qua thi Codeforces
 	Cau lac bo ACM truong Dai hoc Bach Khoa TPHCM'''
 __version__ = '0.0.1'
-
+    
 import argparse
 from argparse import RawTextHelpFormatter
 from api import API
