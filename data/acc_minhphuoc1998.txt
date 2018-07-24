@@ -1,0 +1,24 @@
+	Result of contest Codeforces Round #494 (Div. 3):
+Success Problem: B A
+Total score: 2
+
+	Result of contest Codeforces Round #495 (Div. 2):
+Success Problem: C B A
+Total score: 6
+
+	Result of contest Codeforces Round #496 (Div. 3):
+Success Problem: C B A
+Total score: 3
+
+	Result of contest Codeforces Round #498 (Div. 3):
+Success Problem: C B A
+Total score: 3
+
+	Result of contest Codeforces Round #497 (Div. 1):
+Success Problem: 
+Total score: 0
+
+	Result of contest Codeforces Round #497 (Div. 2):
+Success Problem: 
+Total score: 0
+

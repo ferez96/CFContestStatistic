@@ -10,7 +10,19 @@ import argparse
 from argparse import RawTextHelpFormatter
 from api import API
 
-
+def getResult(contest, user):
+    ct = API.getContestInfo(contest)
+    cr = API.getContestResult(contest, user)
+    sucPro = [ct['name']]
+    for r in cr.results:
+        res = cr.results[r]
+        for s in res:
+            if str(s['verdict']) == "OK":
+                sucPro.append(r)
+                break
+    return sucPro
+    
+    
 def printResult(contest, user):
 	ct = API.getContestInfo(contest)
 	print("\tResult of contest", ct['name'],":")
@@ -24,7 +36,6 @@ def printResult(contest, user):
 				+str(s['passedTestCount'])+'\t'
 				+str(s['timeConsumedMillis'])+'\t'
 				+str(s['memoryConsumedBytes'])+'\t')
-
 
 def main(args):
 	if args.contests!=None and args.users!=None:
