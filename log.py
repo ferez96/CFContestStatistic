@@ -11,6 +11,7 @@ CONTEST_3 = {'A': 1, 'B': 1, 'C': 1, 'D': 2, 'E': 4}
 # Contest
 CONTEST = [CONTEST_0, CONTEST_1, CONTEST_2, CONTEST_3]
 
+
 def ctype(contest_name):
     if contest_name.find("Educational") != -1:
         return 0
@@ -21,17 +22,18 @@ def ctype(contest_name):
     if contest_name.find("Div. 3") != -1:
         return 3
     return 4
-    
+
+
 def score(contest_name, succ_problem):
     contestName = contest_name
     contestType = ctype(contestName)
     succProblem = succ_problem
     totalScore = 0
-    
+
     for problem in succProblem:
         if problem in CONTEST[contestType].keys():
             totalScore += CONTEST[contestType][problem]
-    
+
     return totalScore
 
 
@@ -55,7 +57,7 @@ for user_name in userName:
         contestName = result[0]
         succProblem = result[1:]
         totalScore = score(contestName, succProblem)
-        
+
         h.write("\tResult of contest " + contestName + ":\n")
         h.write("Success Problem: " + ' '.join(succProblem) + "\n")
         h.write("Total score: " + str(totalScore) + "\n\n")
