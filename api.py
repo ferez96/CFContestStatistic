@@ -25,6 +25,7 @@ class ContestResult:
 
 
 class API:
+    @staticmethod
     def crawl(request):
         conn = http.client.HTTPConnection('codeforces.com')
         conn.request('GET', request)
@@ -33,6 +34,7 @@ class API:
         data = json.loads(raw_data.decode('utf-8'))
         return data.get('result')
 
+    @staticmethod
     def getContestInfo(contestID):
         request = '/api/contest.standings?contestId=' + str(contestID) + '&from=1&count=1'
         raw = API.crawl(request)
@@ -40,11 +42,13 @@ class API:
         contest['problems'] = raw['problems']
         return contest
 
+    @staticmethod
     def getContestSubmissions(contestID, userHandle):
         request = '/api/contest.status?contestId=' + str(contestID) + '&handle=' + str(userHandle)
         submissions = API.crawl(request)
         return submissions
 
+    @staticmethod
     def getContestResult(contestID, userHandle):
         submission = API.getContestSubmissions(contestID, userHandle)
         cr = ContestResult(contestID, userHandle)
