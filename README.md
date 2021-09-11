@@ -3,9 +3,9 @@
 ## Command line
 ### Help
 ```bash
-./main.py -h
+./main.py --help
 ```
 ### Example
 ```bash
-./main.py -contests 1003 1004 -users ferez.96 minhphuoc1998
+./main.py user-info minhphuoc1998
 ```

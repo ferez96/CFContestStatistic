@@ -1,57 +1,44 @@
 #!/usr/bin/env python3
-# Main.py
-#
 """
-    Chuong trinh thong ke ket qua thi Codeforces
-    Cau lac bo ACM truong Dai hoc Bach Khoa TPHCM
+Chuong trinh thong ke ket qua thi Codeforces
+
+Cau lac bo giai thuat truong Dai hoc Bach Khoa TPHCM
 """
-__version__ = '0.0.1'
+__authors__ = ("Duong Thai Minh", "Nguyen Ho Minh Phuoc")
+__version__ = '0.0.2'
 
-import argparse
-from argparse import RawTextHelpFormatter
-from api import API
+import logging
 
+import click
 
-def getResult(contest, user):
-    ct = API.getContestInfo(contest)
-    cr = API.getContestResult(contest, user)
-    sucPro = [ct['name']]
-    for r in cr.results:
-        res = cr.results[r]
-        for s in res:
-            if str(s['verdict']) == "OK":
-                sucPro.append(r)
-                break
-    return sucPro
+import crawling
+
+# config logging
+LOGGING_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+logging.basicConfig(level=logging.INFO, format=LOGGING_FORMAT)
+logging.getLogger(__name__).info("Logging configured")
 
 
-def printResult(contest, user):
-    ct = API.getContestInfo(contest)
-    print("\tResult of contest", ct['name'], ":")
-    cr = API.getContestResult(contest, user)
-    for r in cr.results:
-        res = cr.results[r]
-        for s in res:
-            print(str(s['id']) + '\t'
-                  + r + '\t'
-                  + str(s['verdict']) + '\t'
-                  + str(s['passedTestCount']) + '\t'
-                  + str(s['timeConsumedMillis']) + '\t'
-                  + str(s['memoryConsumedBytes']) + '\t')
+@click.group(help=__doc__)
+def cli():
+    pass
 
 
-def main(args):
-    if args.contests and args.users:
-        for u in args.users:
-            print('\t\t*** User:', u, '***')
-            for c in args.contests:
-                printResult(c, u)
-            print()
+@cli.command()
+def ping():
+    assert crawling.CodeForceHTTPClient().ping(), "Ping"
+
+
+@cli.command("user-info")
+@click.argument("handle")
+def get_user_info(handle):
+    user_info = crawling.CodeForceHTTPClient().send_request("user.info", dict(handles=handle))
+    print(user_info)
+
+
+def main():
+    cli()
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=RawTextHelpFormatter)
-    parser.add_argument('-contests', metavar='contest_id', type=int, nargs='+', help='contest ID')
-    parser.add_argument('-users', metavar='user_handle', type=str, nargs='+', help='username')
-    _args = parser.parse_args()
-    main(_args)
+    main()
