@@ -1,3 +1,7 @@
+Flask
 SQLAlchemy
 click
 requests
+numpy
+pandas
+Jinja2

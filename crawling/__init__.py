@@ -10,7 +10,7 @@ import requests
 logger = logging.getLogger(__name__)
 
 
-class CodeForceHTTPClient(object):
+class CodeForcesHTTPClient(object):
     host: str
     port: int
     lang: str
@@ -28,7 +28,7 @@ class CodeForceHTTPClient(object):
         self.api_key = api_key
 
     def ping(self) -> bool:
-        """Send an simple requests to verify CodeForce server is still up running"""
+        """Send an simple requests to verify CodeForces server is still up running"""
         try:
             self.send_request("recentActions", dict(maxCount=1))
             return True
