@@ -4,8 +4,12 @@ from flask import render_template
 
 
 def contest_details_view(contest_id):
-    data = crawling.CodeForcesHTTPClient().send_request("contest.standings",
-                                                        dict(contestId=contest_id))
+    params = {
+        "contestId": contest_id,
+        "from": 1,
+        "count": 20
+    }
+    data = crawling.CodeForcesHTTPClient().send_request("contest.standings", params)
 
     d = [
         {
