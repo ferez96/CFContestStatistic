@@ -17,4 +17,7 @@ def create_app() -> Flask:
     def index_view():
         return "OK"
 
+    from commands.server import cron_cli
+    app.cli.add_command(cron_cli)
+
     return app

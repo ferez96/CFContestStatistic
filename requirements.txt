@@ -1,3 +1,4 @@
+python-dotenv
 Flask
 SQLAlchemy
 click
@@ -5,3 +6,9 @@ requests
 numpy
 pandas
 Jinja2
+marshmallow
+pytest
+pytest-cov
+coverage
+pymongo
+dnspython
