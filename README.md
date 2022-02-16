@@ -1,11 +1,4 @@
-<!-- Required extensions: pymdownx.betterem, pymdownx.tilde, pymdownx.emoji, pymdownx.tasklist, pymdownx.superfences -->
-# CFContestStatistic
-## Command line
-### Help
-```bash
-./main.py --help
-```
-### Example
-```bash
-./main.py user-info minhphuoc1998
-```
+# Bach Khoa Algorithm Club - Members Profile
+
+[![Python application](https://github.com/ferez96/CFContestStatistic/actions/workflows/python-app.yml/badge.svg)](https://github.com/ferez96/CFContestStatistic/actions/workflows/python-app.yml)
+
