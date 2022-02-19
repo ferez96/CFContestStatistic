@@ -9,3 +9,9 @@ def get_member_profile_by_id(member_id) -> Optional[MemberProfile]:
     if not data:
         return None
     return MemberProfile.load(data)
+
+
+def get_list_member_id() -> List[int]:
+    db = get_db()
+    ids = db["members"].find().distinct("_id")
+    return [int(x) for x in ids]

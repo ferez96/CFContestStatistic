@@ -12,7 +12,13 @@ def mongodb_with_members(mongo_testdb):
                 "codeforces": {
                     "handle": "I_UsedTo_Love_You",
                     "rating": 1500,
-                }
+                },
+            },
+            {
+                "_id": 2,
+                "name": "Truong Cong Thanh",
+                "codeforces_handle": "TYT",
+                "codeforces": None,
             }
         ]
     )
