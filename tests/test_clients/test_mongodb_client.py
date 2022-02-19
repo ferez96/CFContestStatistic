@@ -5,7 +5,7 @@ import pytest
 @pytest.fixture()
 def dbname():
     import config
-    CONNECTION_STRING = f"mongodb+srv://{config.MONGODB_USERNAME}:{config.MONGODB_PASSWORD}@{config.MONGODB_HOST}/test"
+    CONNECTION_STRING = f"{config.MONGODB_DRIVER}://{config.MONGODB_USERNAME}:{config.MONGODB_PASSWORD}@{config.MONGODB_HOST}/test"
 
     client = MongoClient(CONNECTION_STRING)
     yield client['test']
