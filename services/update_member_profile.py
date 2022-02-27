@@ -3,9 +3,10 @@ from marshmallow import Schema, fields
 
 from clients.codeforces import CodeforcesHttpClient
 import models
+from repositories.member_profile import get_list_member_id, get_member_profile_by_id, update_member_by_id
+from repositories.member_codeforces_profile import fetch_member_codeforces_profile
 
 _logger = logging.getLogger(__name__)
-
 
 
 def load_members_list(path_to_json_file):
@@ -37,4 +38,15 @@ def fetch_codeforces_profile_by_handle(codeforces_handle):
 
 
 def update_member_profile_all():
-    pass
+    all_ids = get_list_member_id()
+    for member_id in all_ids:
+        update_member_profile_by_id(member_id)
+
+
+def update_member_profile_by_id(member_id):
+    print(f"update profile for member with id {member_id}")
+    member_profile = get_member_profile_by_id(member_id)
+    handle = member_profile.codeforces_handle
+    member_profile.codeforces = fetch_member_codeforces_profile(handle)
+    print(member_profile)
+    update_member_by_id(member_id, member_profile)

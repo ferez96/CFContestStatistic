@@ -11,7 +11,10 @@ def test_create_new_instance():
 
 
 def test_str():
-    assert str(MemberProfile(name="Name")) == "<MemberProfile>(name=Name,codeforces=None)"
+    assert str(MemberProfile(
+        name="Name",
+        codeforce_handle="handle",
+    )) == "<MemberProfile>(name=Name,codeforces=None,codeforces_handle=handle)"
 
 
 def test_eq():

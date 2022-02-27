@@ -15,3 +15,9 @@ def get_list_member_id() -> List[int]:
     db = get_db()
     ids = db["members"].find().distinct("_id")
     return [int(x) for x in ids]
+
+
+def update_member_by_id(member_id, new_profile):
+    db = get_db()
+    db["members"].find_one_and_replace({"_id": member_id},
+                                       new_profile.as_dict())

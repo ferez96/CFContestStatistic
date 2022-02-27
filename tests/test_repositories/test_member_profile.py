@@ -14,6 +14,7 @@ def test_get_member_profile_by_id_happy(mongodb_with_members):
         _get_db.return_value = mongodb_with_members
         expected = MemberProfile(
             name="Duong Thai Minh",
+            codeforce_handle="I_UsedTo_Love_You",
             codeforces=MemberCodeforcesProfile(
                 handle="I_UsedTo_Love_You",
                 rank=None,
@@ -29,6 +30,7 @@ def test_get_member_profile_by_id_missing_codeforces_profile(mongodb_with_member
         _get_db.return_value = mongodb_with_members
         expected = MemberProfile(
             name="Truong Cong Thanh",
+            codeforce_handle="TYT",
             codeforces=None
         )
         member = get_member_profile_by_id(2)

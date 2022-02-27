@@ -33,3 +33,10 @@ class MemberCodeforcesProfile(Base):
             rank=data.get("rank"),
             rating=data.get("rating"),
         )
+
+    def as_dict(self):
+        return {
+            "handle": self.handle,
+            "rank": self.rank,
+            "rating": self.rating,
+        }

@@ -14,4 +14,7 @@ def start():
 
 @cron_cli.command("update")
 def cronjob_update():
+    from services.update_member_profile import update_member_profile_all
+
+    update_member_profile_all()
     print("Done!")
